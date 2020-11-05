@@ -397,7 +397,7 @@ you can train with a new <cite>–dataset=mydataset</cite>. The particular confi
 of keypoints and skeleton is specified in the <cite>headmeta</cite> instances.</p>
 <dl class="py attribute">
 <dt id="openpifpaf.datasets.DataModule.batch_size">
-<code class="sig-name descname">batch_size</code><em class="property"> = 8</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.batch_size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">batch_size</code><em class="property"> = 1</em><a class="headerlink" href="#openpifpaf.datasets.DataModule.batch_size" title="Permalink to this definition">¶</a></dt>
 <dd><p>Data loader batch size.</p>
 </dd></dl>
 
@@ -457,14 +457,14 @@ so that the loss function can be computed.</p>
 <dl class="py method">
 <dt id="openpifpaf.datasets.DataModule.eval_loader">
 <code class="sig-name descname">eval_loader</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; torch.utils.data.dataloader.DataLoader<a class="headerlink" href="#openpifpaf.datasets.DataModule.eval_loader" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loader of the evluation dataset.</p>
+<dd><p>Loader of the evaluation dataset.</p>
 <p>For local runs, it is common that the validation dataset is also the
 evaluation dataset. This is then changed to test datasets (without
 ground truth) to produce predictions for submissions to a competition
 server that holds the private ground truth.</p>
 <p>This loader shouldn’t have any data augmentation. The images should be
 as close as possible to the real application.
-The annotations should be the groud truth annotations similarly to
+The annotations should be the ground truth annotations similarly to
 what the output of the decoder is expected to be.</p>
 </dd></dl>
 

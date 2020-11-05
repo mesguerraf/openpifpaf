@@ -361,7 +361,7 @@ The API is for more advanced use cases. Please read <a class="reference internal
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0+untagged.1.g5328796
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0+untagged.1.g940bf49
 1.7.0
 </pre></div>
 </div>
@@ -390,7 +390,7 @@ The API is for more advanced use cases. Please read <a class="reference internal
 <h2>Load a Trained Neural Network<a class="headerlink" href="#load-a-trained-neural-network" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net_cpu</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;shufflenetv2k16w&#39;</span><span class="p">,</span> <span class="n">download_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net_cpu</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="s1">&#39;shufflenetv2k16&#39;</span><span class="p">,</span> <span class="n">download_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">net</span> <span class="o">=</span> <span class="n">net_cpu</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 
 <span class="n">openpifpaf</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">CifSeeds</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>

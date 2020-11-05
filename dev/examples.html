@@ -301,8 +301,8 @@
 <p>Example predictions from the COCO val set.
 These are the first images with more than five person annotations that were shared with <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.
 These examples are not cherry-picked.</p>
-<p>All examples are predicted with the fast model <code class="docutils literal notranslate"><span class="pre">shufflenetv2k16w</span></code>. <br />
-For more accurate results, try <code class="docutils literal notranslate"><span class="pre">--checkpoint=shufflenetv2k30w</span></code>.</p>
+<p>All examples are predicted with the fast model <code class="docutils literal notranslate"><span class="pre">shufflenetv2k16</span></code>. <br />
+For more accurate results, try <code class="docutils literal notranslate"><span class="pre">--checkpoint=shufflenetv2k30</span></code>.</p>
 <p>The examples below are generated with the shown command which is documented in <a class="reference internal" href="predict_cli.html"><span class="doc">Prediction</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -315,7 +315,7 @@ For more accurate results, try <code class="docutils literal notranslate"><span 
   return torch._C._cuda_getDeviceCount() &gt; 0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifcaf:23 annotations: [14, 16, 17, 17, 11, 16, 15, 13, 13, 10, 15, 13, 15, 11, 13, 12, 10, 13, 13, 11, 8, 9, 7]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifcaf:25 annotations: [14, 15, 17, 17, 16, 15, 12, 12, 9, 11, 14, 13, 13, 13, 13, 12, 12, 11, 12, 9, 11, 11, 9, 7, 3]
 INFO:__main__:batch 0: coco/000000188465.jpg
 </pre></div>
 </div>
@@ -334,8 +334,10 @@ Image credit: <a class="reference external" href="https://www.flickr.com/photos/
   return torch._C._cuda_getDeviceCount() &gt; 0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifcaf:13 annotations: [14, 9, 9, 6, 4, 6, 4, 3, 4, 6, 3, 4, 5]
-INFO:__main__:batch 0: coco/000000114907.jpg
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifcaf:14 annotations: [16, 9, 8, 6, 4, 3, 5, 5, 6, 4, 4, 4, 3, 2]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:__main__:batch 0: coco/000000114907.jpg
 </pre></div>
 </div>
 </div>
@@ -353,7 +355,7 @@ Image credit: <a class="reference external" href="https://www.flickr.com/photos/
   return torch._C._cuda_getDeviceCount() &gt; 0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifcaf:5 annotations: [15, 13, 10, 4, 2]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifcaf:5 annotations: [15, 10, 12, 4, 2]
 INFO:__main__:batch 0: coco/000000147740.jpg
 </pre></div>
 </div>
@@ -372,7 +374,7 @@ Image credit: <a class="reference external" href="https://www.flickr.com/photos/
   return torch._C._cuda_getDeviceCount() &gt; 0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifcaf:5 annotations: [17, 17, 16, 17, 7]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifcaf:5 annotations: [17, 17, 17, 15, 8]
 INFO:__main__:batch 0: coco/000000541055.jpg
 </pre></div>
 </div>

@@ -386,7 +386,7 @@ optional arguments:
   --disable-cuda        disable CUDA (default: False)
 
 decoder configuration:
-  --decoder {cifdet,cifcaf} [{cifdet,cifcaf} ...]
+  --decoder {cifcaf,cifdet} [{cifcaf,cifdet} ...]
                         Decoders to be considered. (default: None)
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
@@ -425,24 +425,6 @@ logger:
   --debug               print debug messages (default: False)
   --log-stats           enable stats logging (default: False)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
-shufflenetv2k:
-  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
-                        out channels of the optional 2nd input convolution
-                        (default: None)
-  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
-                        dilation factor of stage 4 (default: 1)
-  --shufflenetv2k-kernel SHUFFLENETV2K_KERNEL
-                        kernel width (default: 5)
-  --shufflenetv2k-instance-norm
-  --shufflenetv2k-group-norm
-
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
@@ -458,6 +440,24 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
+shufflenetv2k:
+  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
+                        stride of the optional 2nd input convolution (default:
+                        0)
+  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
+                        out channels of the optional 2nd input convolution
+                        (default: None)
+  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
+                        dilation factor of stage 4 (default: 1)
+  --shufflenetv2k-kernel SHUFFLENETV2K_KERNEL
+                        kernel width (default: 5)
+  --shufflenetv2k-instance-norm
+  --shufflenetv2k-group-norm
+
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -466,9 +466,9 @@ CompositeField3:
 
 network configuration:
   --checkpoint CHECKPOINT
-                        Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
-                        pretrained OpenPifPaf models. (default: None)
+                        Path to a local checkpoint. Or provide one of the
+                        following to download a pretrained model:
+                        &quot;shufflenetv2k16&quot; (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
   --multi-scale         [experimental] (default: False)
@@ -601,10 +601,6 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -619,6 +615,10 @@ shufflenetv2k:
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
 
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -627,9 +627,9 @@ CompositeField3:
 
 network configuration:
   --checkpoint CHECKPOINT
-                        Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
-                        pretrained OpenPifPaf models. (default: None)
+                        Path to a local checkpoint. Or provide one of the
+                        following to download a pretrained model:
+                        &quot;shufflenetv2k16&quot; (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
   --multi-scale         [experimental] (default: False)
@@ -791,10 +791,6 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -809,6 +805,10 @@ shufflenetv2k:
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
 
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -817,9 +817,9 @@ CompositeField3:
 
 network configuration:
   --checkpoint CHECKPOINT
-                        Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
-                        pretrained OpenPifPaf models. (default: None)
+                        Path to a local checkpoint. Or provide one of the
+                        following to download a pretrained model:
+                        &quot;shufflenetv2k16&quot; (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
   --multi-scale         [experimental] (default: False)
@@ -1166,10 +1166,6 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -1184,6 +1180,10 @@ shufflenetv2k:
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
 
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -1192,9 +1192,9 @@ CompositeField3:
 
 network configuration:
   --checkpoint CHECKPOINT
-                        Load a model from a checkpoint. Use &quot;resnet50&quot;,
-                        &quot;shufflenetv2k16w&quot; or &quot;shufflenetv2k30w&quot; for
-                        pretrained OpenPifPaf models. (default: None)
+                        Path to a local checkpoint. Or provide one of the
+                        following to download a pretrained model:
+                        &quot;shufflenetv2k16&quot; (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
   --multi-scale         [experimental] (default: False)

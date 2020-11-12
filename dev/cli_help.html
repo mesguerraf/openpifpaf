@@ -381,7 +381,7 @@ optional arguments:
   --disable-cuda        disable CUDA (default: False)
 
 decoder configuration:
-  --decoder {cifcaf,cifdet} [{cifcaf,cifdet} ...]
+  --decoder {cifdet,cifcaf} [{cifdet,cifcaf} ...]
                         Decoders to be considered. (default: None)
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
@@ -424,6 +424,14 @@ SqueezeNet:
   --squeezenet-no-pretrain
                         use randomly initialized models (default: True)
 
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -437,14 +445,6 @@ shufflenetv2k:
                         kernel width (default: 5)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
-
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
 
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
@@ -594,14 +594,6 @@ SqueezeNet:
   --squeezenet-no-pretrain
                         use randomly initialized models (default: True)
 
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -615,6 +607,14 @@ shufflenetv2k:
                         kernel width (default: 5)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
@@ -795,14 +795,6 @@ SqueezeNet:
   --squeezenet-no-pretrain
                         use randomly initialized models (default: True)
 
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -816,6 +808,14 @@ shufflenetv2k:
                         kernel width (default: 5)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
@@ -1179,10 +1179,6 @@ SqueezeNet:
   --squeezenet-no-pretrain
                         use randomly initialized models (default: True)
 
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
@@ -1200,6 +1196,10 @@ shufflenetv2k:
                         kernel width (default: 5)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)

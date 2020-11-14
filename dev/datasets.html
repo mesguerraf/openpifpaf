@@ -366,7 +366,9 @@ unzip test2017.zip
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openpifpaf</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">COCO_KEYPOINTS</span><span class="p">):</span>
+<span class="n">openpifpaf</span><span class="o">.</span><span class="n">plugin</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">coco</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">COCO_KEYPOINTS</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -396,8 +398,8 @@ unzip test2017.zip
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;associations&#39;</span><span class="p">)</span>
-<span class="n">kp_names</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">COCO_KEYPOINTS</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">joint1</span><span class="p">,</span> <span class="n">joint2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">COCO_PERSON_SKELETON</span><span class="p">):</span>
+<span class="n">kp_names</span> <span class="o">=</span> <span class="n">openpifpaf</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">coco</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">COCO_KEYPOINTS</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">joint1</span><span class="p">,</span> <span class="n">joint2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">coco</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">COCO_PERSON_SKELETON</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:2d}</span><span class="s1">: </span><span class="si">{:15s}</span><span class="s1"> --&gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">kp_names</span><span class="p">[</span><span class="n">joint1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">kp_names</span><span class="p">[</span><span class="n">joint2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 </div>

@@ -381,7 +381,7 @@ optional arguments:
   --disable-cuda        disable CUDA (default: False)
 
 decoder configuration:
-  --decoder {cifdet,cifcaf} [{cifdet,cifcaf} ...]
+  --decoder {cifcaf,cifdet} [{cifcaf,cifdet} ...]
                         Decoders to be considered. (default: None)
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
@@ -420,31 +420,13 @@ logger:
   --debug               print debug messages (default: False)
   --log-stats           enable stats logging (default: False)
 
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
 
-MobileNetV2:
-  --mobilenetv2-no-pretrain
+SqueezeNet:
+  --squeezenet-no-pretrain
                         use randomly initialized models (default: True)
-
-shufflenetv2k:
-  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
-                        out channels of the optional 2nd input convolution
-                        (default: None)
-  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
-                        dilation factor of stage 4 (default: 1)
-  --shufflenetv2k-kernel SHUFFLENETV2K_KERNEL
-                        kernel width (default: 5)
-  --shufflenetv2k-instance-norm
-  --shufflenetv2k-group-norm
 
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
@@ -461,6 +443,24 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
+shufflenetv2k:
+  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
+                        stride of the optional 2nd input convolution (default:
+                        0)
+  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
+                        out channels of the optional 2nd input convolution
+                        (default: None)
+  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
+                        dilation factor of stage 4 (default: 1)
+  --shufflenetv2k-kernel SHUFFLENETV2K_KERNEL
+                        kernel width (default: 5)
+  --shufflenetv2k-instance-norm
+  --shufflenetv2k-group-norm
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -474,9 +474,6 @@ network configuration:
                         &quot;shufflenetv2k16&quot; (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
-  --multi-scale         [experimental] (default: False)
-  --no-multi-scale-hflip
-                        [experimental] (default: True)
   --cross-talk CROSS_TALK
                         [experimental] (default: 0.0)
   --no-download-progress
@@ -590,8 +587,34 @@ optional arguments:
                         left top right bottom (default: None)
   --rotate {left,right,180}
 
+ShuffleNetv2:
+  --shufflenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 SqueezeNet:
   --squeezenet-no-pretrain
+                        use randomly initialized models (default: True)
+
+ResNet:
+  --resnet-no-pretrain  use randomly initialized models (default: True)
+  --resnet-pool0-stride RESNET_POOL0_STRIDE
+                        stride of zero removes 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the pooling op (default: 0)
+  --resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE
+                        stride of the input convolution (default: 2)
+  --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
+                        stride of the optional 2nd input convolution (default:
+                        0)
+  --resnet-block5-dilation RESNET_BLOCK5_DILATION
+                        use dilated convs in block5 (default: 1)
+  --resnet-remove-last-block
+                        create a network without the last block (default:
+                        False)
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
                         use randomly initialized models (default: True)
 
 shufflenetv2k:
@@ -608,29 +631,6 @@ shufflenetv2k:
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
 
-ShuffleNetv2:
-  --shufflenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
-ResNet:
-  --resnet-no-pretrain  use randomly initialized models (default: True)
-  --resnet-pool0-stride RESNET_POOL0_STRIDE
-                        stride of zero removes the pooling op (default: 0)
-  --resnet-input-conv-stride RESNET_INPUT_CONV_STRIDE
-                        stride of the input convolution (default: 2)
-  --resnet-input-conv2-stride RESNET_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --resnet-block5-dilation RESNET_BLOCK5_DILATION
-                        use dilated convs in block5 (default: 1)
-  --resnet-remove-last-block
-                        create a network without the last block (default:
-                        False)
-
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -644,9 +644,6 @@ network configuration:
                         &quot;shufflenetv2k16&quot; (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
-  --multi-scale         [experimental] (default: False)
-  --no-multi-scale-hflip
-                        [experimental] (default: True)
   --cross-talk CROSS_TALK
                         [experimental] (default: 0.0)
   --no-download-progress
@@ -791,30 +788,12 @@ logger:
   --debug               print debug messages (default: False)
   --log-stats           enable stats logging (default: False)
 
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
-shufflenetv2k:
-  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
-                        out channels of the optional 2nd input convolution
-                        (default: None)
-  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
-                        dilation factor of stage 4 (default: 1)
-  --shufflenetv2k-kernel SHUFFLENETV2K_KERNEL
-                        kernel width (default: 5)
-  --shufflenetv2k-instance-norm
-  --shufflenetv2k-group-norm
-
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
 
-MobileNetV2:
-  --mobilenetv2-no-pretrain
+SqueezeNet:
+  --squeezenet-no-pretrain
                         use randomly initialized models (default: True)
 
 ResNet:
@@ -832,6 +811,24 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
+shufflenetv2k:
+  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
+                        stride of the optional 2nd input convolution (default:
+                        0)
+  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
+                        out channels of the optional 2nd input convolution
+                        (default: None)
+  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
+                        dilation factor of stage 4 (default: 1)
+  --shufflenetv2k-kernel SHUFFLENETV2K_KERNEL
+                        kernel width (default: 5)
+  --shufflenetv2k-instance-norm
+  --shufflenetv2k-group-norm
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -845,9 +842,6 @@ network configuration:
                         &quot;shufflenetv2k16&quot; (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
-  --multi-scale         [experimental] (default: False)
-  --no-multi-scale-hflip
-                        [experimental] (default: True)
   --cross-talk CROSS_TALK
                         [experimental] (default: 0.0)
   --no-download-progress
@@ -931,6 +925,10 @@ generic data module parameters:
   --dataset-weights DATASET_WEIGHTS [DATASET_WEIGHTS ...]
                         n-1 weights for the datasets (default: None)
 
+data module Cifar10:
+  --cifar10-root-dir CIFAR10_ROOT_DIR
+  --cifar10-download
+
 data module CocoDet:
   --cocodet-train-annotations COCODET_TRAIN_ANNOTATIONS
   --cocodet-val-annotations COCODET_VAL_ANNOTATIONS
@@ -982,10 +980,6 @@ data module CocoKp:
                         set to zero to deactivate rescaling (default: 641)
   --coco-eval-extended-scale
   --coco-eval-orientation-invariant COCO_EVAL_ORIENTATION_INVARIANT
-
-data module Cifar10:
-  --cifar10-root-dir CIFAR10_ROOT_DIR
-  --cifar10-download
 
 show:
   --save-all [SAVE_ALL]
@@ -1079,6 +1073,10 @@ generic data module parameters:
   --dataset-weights DATASET_WEIGHTS [DATASET_WEIGHTS ...]
                         n-1 weights for the datasets (default: None)
 
+data module Cifar10:
+  --cifar10-root-dir CIFAR10_ROOT_DIR
+  --cifar10-download
+
 data module CocoDet:
   --cocodet-train-annotations COCODET_TRAIN_ANNOTATIONS
   --cocodet-val-annotations COCODET_VAL_ANNOTATIONS
@@ -1131,10 +1129,6 @@ data module CocoKp:
   --coco-eval-extended-scale
   --coco-eval-orientation-invariant COCO_EVAL_ORIENTATION_INVARIANT
 
-data module Cifar10:
-  --cifar10-root-dir CIFAR10_ROOT_DIR
-  --cifar10-download
-
 decoder configuration:
   --decoder {cifcaf,cifdet} [{cifcaf,cifdet} ...]
                         Decoders to be considered. (default: None)
@@ -1175,30 +1169,12 @@ logger:
   --debug               print debug messages (default: False)
   --log-stats           enable stats logging (default: False)
 
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
 
-shufflenetv2k:
-  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
-                        stride of the optional 2nd input convolution (default:
-                        0)
-  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
-                        out channels of the optional 2nd input convolution
-                        (default: None)
-  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
-                        dilation factor of stage 4 (default: 1)
-  --shufflenetv2k-kernel SHUFFLENETV2K_KERNEL
-                        kernel width (default: 5)
-  --shufflenetv2k-instance-norm
-  --shufflenetv2k-group-norm
-
-MobileNetV2:
-  --mobilenetv2-no-pretrain
+SqueezeNet:
+  --squeezenet-no-pretrain
                         use randomly initialized models (default: True)
 
 ResNet:
@@ -1216,6 +1192,24 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
+shufflenetv2k:
+  --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
+                        stride of the optional 2nd input convolution (default:
+                        0)
+  --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
+                        out channels of the optional 2nd input convolution
+                        (default: None)
+  --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
+                        dilation factor of stage 4 (default: 1)
+  --shufflenetv2k-kernel SHUFFLENETV2K_KERNEL
+                        kernel width (default: 5)
+  --shufflenetv2k-instance-norm
+  --shufflenetv2k-group-norm
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -1229,9 +1223,6 @@ network configuration:
                         &quot;shufflenetv2k16&quot; (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
-  --multi-scale         [experimental] (default: False)
-  --no-multi-scale-hflip
-                        [experimental] (default: True)
   --cross-talk CROSS_TALK
                         [experimental] (default: 0.0)
   --no-download-progress

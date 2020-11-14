@@ -323,6 +323,7 @@
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openpifpaf</span>
+<span class="n">openpifpaf</span><span class="o">.</span><span class="n">plugin</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -334,7 +335,7 @@
 <img alt="plugin overview" src="_images/plugins_overview.png" /></p>
 <div class="section" id="discovery">
 <h2>Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h2>
-<p>Plugins are modules whose name starts with <code class="docutils literal notranslate"><span class="pre">openpifpaf_</span></code>. Some plugins are also included in <code class="docutils literal notranslate"><span class="pre">openpifpaf.contrib</span></code>. During the discovery process, every plugin’s <code class="docutils literal notranslate"><span class="pre">register()</span></code> function is called. A simple plugin that does nothing, the <code class="docutils literal notranslate"><span class="pre">nothingplugin</span></code> would have this file structure:</p>
+<p>Plugins are modules whose name starts with <code class="docutils literal notranslate"><span class="pre">openpifpaf_</span></code>. Some plugins are also included in <code class="docutils literal notranslate"><span class="pre">openpifpaf.plugins</span></code>. During the discovery process, every plugin’s <code class="docutils literal notranslate"><span class="pre">register()</span></code> function is called. A simple plugin that does nothing, the <code class="docutils literal notranslate"><span class="pre">nothingplugin</span></code> would have this file structure:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|-</span> <span class="n">openpifpaf_nothingplugin</span>  <span class="c1"># project directory (root directory for version control)</span>
   <span class="o">|-</span> <span class="n">Readme</span><span class="o">.</span><span class="n">md</span>
   <span class="o">|-</span> <span class="n">openpifpaf_nothingplugin</span>  <span class="c1"># Python module</span>
@@ -357,8 +358,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;cocodet&#39;: openpifpaf.datasets.cocodet.CocoDet,
- &#39;cocokp&#39;: openpifpaf.datasets.cocokp.CocoKp}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;cifar10&#39;: openpifpaf.plugins.cifar10.datamodule.Cifar10,
+ &#39;cocodet&#39;: openpifpaf.plugins.coco.cocodet.CocoDet,
+ &#39;cocokp&#39;: openpifpaf.plugins.coco.cocokp.CocoKp}
 </pre></div>
 </div>
 </div>
@@ -386,7 +388,8 @@
  openpifpaf.network.basenetworks.Resnet,
  openpifpaf.network.basenetworks.ShuffleNetV2,
  openpifpaf.network.basenetworks.ShuffleNetV2K,
- openpifpaf.network.basenetworks.SqueezeNet}
+ openpifpaf.network.basenetworks.SqueezeNet,
+ openpifpaf.plugins.cifar10.basenet.Cifar10Net}
 </pre></div>
 </div>
 </div>
@@ -411,7 +414,8 @@
  &#39;shufflenetv2k20&#39;: &lt;function openpifpaf.network.factory.&lt;lambda&gt;()&gt;,
  &#39;shufflenetv2k30&#39;: &lt;function openpifpaf.network.factory.&lt;lambda&gt;()&gt;,
  &#39;shufflenetv2k44&#39;: &lt;function openpifpaf.network.factory.&lt;lambda&gt;()&gt;,
- &#39;squeezenet&#39;: &lt;function openpifpaf.network.factory.&lt;lambda&gt;()&gt;}
+ &#39;squeezenet&#39;: &lt;function openpifpaf.network.factory.&lt;lambda&gt;()&gt;,
+ &#39;cifar10net&#39;: &lt;function openpifpaf.plugins.cifar10.register.&lt;locals&gt;.&lt;lambda&gt;()&gt;}
 </pre></div>
 </div>
 </div>
@@ -461,7 +465,7 @@
 <p>Headmeta (see <a class="reference internal" href="moduledocs.html#api-headmeta"><span class="std std-ref">openpifpaf.headmeta</span></a>) is a class that holds configuration data about a head network. It is instantiated in a DataModule (above) and used throughout OpenPifPaf to configure various other parts. For example, the <code class="docutils literal notranslate"><span class="pre">cocokp</span></code> head meta instances are:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CocoKp</span><span class="p">()</span><span class="o">.</span><span class="n">head_metas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">coco</span><span class="o">.</span><span class="n">CocoKp</span><span class="p">()</span><span class="o">.</span><span class="n">head_metas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -489,7 +493,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">CocoKp</span><span class="p">()</span><span class="o">.</span><span class="n">head_metas</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">openpifpaf</span><span class="o">.</span><span class="n">plugins</span><span class="o">.</span><span class="n">coco</span><span class="o">.</span><span class="n">CocoKp</span><span class="p">()</span><span class="o">.</span><span class="n">head_metas</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>

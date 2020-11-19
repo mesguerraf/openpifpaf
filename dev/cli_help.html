@@ -381,7 +381,7 @@ optional arguments:
   --disable-cuda        disable CUDA (default: False)
 
 decoder configuration:
-  --decoder {cifdet,cifcaf} [{cifdet,cifcaf} ...]
+  --decoder {cifcaf,cifdet} [{cifcaf,cifdet} ...]
                         Decoders to be considered. (default: None)
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
@@ -471,7 +471,8 @@ network configuration:
   --checkpoint CHECKPOINT
                         Path to a local checkpoint. Or provide one of the
                         following to download a pretrained model:
-                        &quot;shufflenetv2k16&quot; (default: None)
+                        &quot;mobilenetv2&quot;, &quot;shufflenetv2k16&quot;, &quot;shufflenetv2k30&quot;
+                        (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
   --cross-talk CROSS_TALK
@@ -609,10 +610,6 @@ ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
 
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
@@ -628,6 +625,10 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
+SqueezeNet:
+  --squeezenet-no-pretrain
+                        use randomly initialized models (default: True)
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -638,7 +639,8 @@ network configuration:
   --checkpoint CHECKPOINT
                         Path to a local checkpoint. Or provide one of the
                         following to download a pretrained model:
-                        &quot;shufflenetv2k16&quot; (default: None)
+                        &quot;mobilenetv2&quot;, &quot;shufflenetv2k16&quot;, &quot;shufflenetv2k30&quot;
+                        (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
   --cross-talk CROSS_TALK
@@ -807,10 +809,6 @@ ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
 
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
@@ -826,6 +824,10 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
+SqueezeNet:
+  --squeezenet-no-pretrain
+                        use randomly initialized models (default: True)
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -836,7 +838,8 @@ network configuration:
   --checkpoint CHECKPOINT
                         Path to a local checkpoint. Or provide one of the
                         following to download a pretrained model:
-                        &quot;shufflenetv2k16&quot; (default: None)
+                        &quot;mobilenetv2&quot;, &quot;shufflenetv2k16&quot;, &quot;shufflenetv2k30&quot;
+                        (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
   --cross-talk CROSS_TALK
@@ -1188,10 +1191,6 @@ ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
 
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
 ResNet:
   --resnet-no-pretrain  use randomly initialized models (default: True)
   --resnet-pool0-stride RESNET_POOL0_STRIDE
@@ -1207,6 +1206,10 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
+SqueezeNet:
+  --squeezenet-no-pretrain
+                        use randomly initialized models (default: True)
+
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -1217,7 +1220,8 @@ network configuration:
   --checkpoint CHECKPOINT
                         Path to a local checkpoint. Or provide one of the
                         following to download a pretrained model:
-                        &quot;shufflenetv2k16&quot; (default: None)
+                        &quot;mobilenetv2&quot;, &quot;shufflenetv2k16&quot;, &quot;shufflenetv2k30&quot;
+                        (default: None)
   --basenet BASENET     base network, e.g. resnet50 (default: None)
   --two-scale           [experimental] (default: False)
   --cross-talk CROSS_TALK

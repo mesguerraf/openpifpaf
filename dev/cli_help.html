@@ -387,7 +387,8 @@ decoder configuration:
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
   --instance-threshold INSTANCE_THRESHOLD
-                        filter instances by score (default: 0.0)
+                        filter instances by score (0.0 with --force-complete-
+                        pose else 0.15) (default: None)
   --decoder-workers DECODER_WORKERS
                         number of workers for pose decoding (default: None)
   --caf-seeds           [experimental] (default: False)
@@ -444,10 +445,6 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -461,6 +458,10 @@ shufflenetv2k:
                         kernel width (default: 5)
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -598,7 +599,10 @@ shufflenetv2k:
                         stride of the optional 2nd input convolution (default:
                         0)
   --shufflenetv2k-input-conv2-outchannels SHUFFLENETV2K_INPUT_CONV2_OUTCHANNELS
-                        out channels of the optional 2nd input convolution
+                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        out channels of the optional 2nd input convolution
                         (default: None)
   --shufflenetv2k-stage4-dilation SHUFFLENETV2K_STAGE4_DILATION
                         dilation factor of stage 4 (default: 1)
@@ -660,7 +664,8 @@ decoder configuration:
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
   --instance-threshold INSTANCE_THRESHOLD
-                        filter instances by score (default: 0.0)
+                        filter instances by score (0.0 with --force-complete-
+                        pose else 0.15) (default: None)
   --decoder-workers DECODER_WORKERS
                         number of workers for pose decoding (default: None)
   --caf-seeds           [experimental] (default: False)
@@ -1138,7 +1143,8 @@ decoder configuration:
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
   --instance-threshold INSTANCE_THRESHOLD
-                        filter instances by score (default: 0.0)
+                        filter instances by score (0.0 with --force-complete-
+                        pose else 0.15) (default: None)
   --decoder-workers DECODER_WORKERS
                         number of workers for pose decoding (default: None)
   --caf-seeds           [experimental] (default: False)

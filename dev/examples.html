@@ -284,6 +284,20 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#debug-outputs">
+   Debug Outputs
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -375,6 +389,101 @@ INFO:__main__:batch 0: coco/000000541055.jpg
 </div>
 <p><img alt="predicted" src="_images/000000541055.jpg.predictions.png" /><br />
 Image credit: <a class="reference external" href="https://www.flickr.com/photos/12407269&#64;N07/3465325303/">Photo</a> by Jarrod Doll shared under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
+<div class="section" id="debug-outputs">
+<h2>Debug Outputs<a class="headerlink" href="#debug-outputs" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m openpifpaf.predict coco/000000541055_cropped.jpeg --image-output --debug-images --debug-indices cif:5 cifhr:5 caf:5 --save-all<span class="o">=</span>coco_debug_example --image-height<span class="o">=</span><span class="m">6</span> --image-min-dpi<span class="o">=</span><span class="m">200</span> --show-file-extension<span class="o">=</span>jpeg
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() &gt; 0
+DEBUG:__main__:neural network device: cpu
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.factory:head names = [&#39;cif&#39;, &#39;caf&#39;, &#39;caf25&#39;]
+DEBUG:openpifpaf.visualizer.base:cif: indices = [5]
+DEBUG:openpifpaf.show.painters:color connections = True, lw = 2, marker = 6
+DEBUG:openpifpaf.show.painters:color connections = False, lw = 6, marker = 3
+DEBUG:openpifpaf.visualizer.base:caf: indices = [5]
+DEBUG:openpifpaf.show.painters:color connections = True, lw = 2, marker = 6
+DEBUG:openpifpaf.show.painters:color connections = False, lw = 6, marker = 3
+DEBUG:openpifpaf.decoder.factory:created 1 decoders
+DEBUG:openpifpaf.show.painters:color connections = False, lw = 6, marker = 3
+DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 369. 320.], image size = (370, 321)
+DEBUG:openpifpaf.transforms.pad:pad with (7, 0, 8, 0)
+DEBUG:openpifpaf.transforms.pad:valid area after pad: [  7.   0. 369. 320.], image size = (385, 321)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.decoder:nn processing time: 0.384s
+DEBUG:openpifpaf.decoder.decoder:parallel execution with worker &lt;openpifpaf.decoder.decoder.DummyPool object at 0x7f2e52992d90&gt;
+DEBUG:openpifpaf.decoder.multi:task 0
+DEBUG:openpifpaf.decoder.cifcaf:initial annotations = 0
+DEBUG:openpifpaf.visualizer.cif:left_shoulder
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.show.canvas:writing image to coco_debug_example/0001.jpeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.visualizer.cif:left_shoulder
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.show.canvas:writing image to coco_debug_example/0002.jpeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.visualizer.caf:left_shoulder,left_hip
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.show.canvas:writing image to coco_debug_example/0003.jpeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.visualizer.caf:left_shoulder,left_hip
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.show.canvas:writing image to coco_debug_example/0004.jpeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.utils.cif_hr:target_intensities 0.003s
+DEBUG:openpifpaf.visualizer.cifhr:5 (field name: unknown)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.show.canvas:writing image to coco_debug_example/0005.jpeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.utils.cif_seeds:seeds 908, 0.002s (C++ 0.001s)
+DEBUG:openpifpaf.decoder.utils.caf_scored:scored caf (1434, 1500) in 0.004s
+DEBUG:openpifpaf.decoder.utils.occupancy:shape = (17, 161, 193), min_scale = 2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.show.canvas:writing image to coco_debug_example/0006.jpeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.cifcaf:annotations 5, 2.169s
+DEBUG:openpifpaf.decoder.utils.occupancy:shape = (17, 137, 164), min_scale = 2
+DEBUG:openpifpaf.decoder.utils.nms:nms = 0.003s
+INFO:openpifpaf.decoder.cifcaf:5 annotations: [17, 17, 17, 14, 7]
+DEBUG:openpifpaf.decoder.decoder:time: nn = 0.385s, dec = 2.175s
+INFO:__main__:batch 0: coco/000000541055_cropped.jpeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:__main__:image output = coco/000000541055_cropped.jpeg.predictions.jpeg
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.show.canvas:writing image to coco/000000541055_cropped.jpeg.predictions.jpeg
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="CIF_c" src="_images/0001.jpeg" />
+<img alt="CIF_r" src="_images/0002.jpeg" />
+<img alt="CIF_hr" src="_images/0005.jpeg" />
+Image credit: <a class="reference external" href="https://www.flickr.com/photos/12407269&#64;N07/3465325303/">Photo</a> by Jarrod Doll shared under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
+<p><img alt="CAF_c" src="_images/0003.jpeg" />
+<img alt="CAF_r" src="_images/0004.jpeg" />
+Image credit: <a class="reference external" href="https://www.flickr.com/photos/12407269&#64;N07/3465325303/">Photo</a> by Jarrod Doll shared under <a class="reference external" href="https://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

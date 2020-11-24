@@ -408,48 +408,31 @@ To create a network, we use the <code class="docutils literal notranslate"><span
 <p>We train a very small network, <code class="docutils literal notranslate"><span class="pre">cifar10net</span></code>, for only one epoch. Afterwards, we will investigate its predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m openpifpaf.train --dataset<span class="o">=</span>cifar10 --basenet<span class="o">=</span>cifar10net --epochs<span class="o">=</span><span class="m">1</span> --log-interval<span class="o">=</span><span class="m">500</span> --lr-warm-up-epochs<span class="o">=</span><span class="m">0</span>.1 --lr<span class="o">=</span>3e-3 --batch-size<span class="o">=</span><span class="m">16</span> --loader-workers<span class="o">=</span><span class="m">2</span> --output<span class="o">=</span>cifar10_tutorial.pkl
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+python -m openpifpaf.train --dataset=cifar10 --basenet=cifar10net --epochs=1 --log-interval=500 --lr-warm-up-epochs=0.1 --lr=3e-3 --batch-size=16 --loader-workers=2 --output=cifar10_tutorial.pkl
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
-  return torch._C._cuda_getDeviceCount() &gt; 0
-INFO:openpifpaf.logger:{&#39;type&#39;: &#39;process&#39;, &#39;argv&#39;: [&#39;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/train.py&#39;, &#39;--dataset=cifar10&#39;, &#39;--basenet=cifar10net&#39;, &#39;--epochs=1&#39;, &#39;--log-interval=500&#39;, &#39;--lr-warm-up-epochs=0.1&#39;, &#39;--lr=3e-3&#39;, &#39;--batch-size=16&#39;, &#39;--loader-workers=2&#39;, &#39;--output=cifar10_tutorial.pkl&#39;], &#39;args&#39;: {&#39;quiet&#39;: False, &#39;debug&#39;: False, &#39;log_stats&#39;: False, &#39;shufflenetv2_pretrained&#39;: True, &#39;squeezenet_pretrained&#39;: True, &#39;resnet_pretrained&#39;: True, &#39;resnet_pool0_stride&#39;: 0, &#39;resnet_input_conv_stride&#39;: 2, &#39;resnet_input_conv2_stride&#39;: 0, &#39;resnet_block5_dilation&#39;: 1, &#39;resnet_remove_last_block&#39;: False, &#39;mobilenetv2_pretrained&#39;: True, &#39;shufflenetv2k_input_conv2_stride&#39;: 0, &#39;shufflenetv2k_input_conv2_outchannels&#39;: None, &#39;shufflenetv2k_stage4_dilation&#39;: 1, &#39;shufflenetv2k_kernel&#39;: 5, &#39;shufflenetv2k_instance_norm&#39;: False, &#39;shufflenetv2k_group_norm&#39;: False, &#39;cf3_dropout&#39;: 0.0, &#39;cf3_inplace_ops&#39;: True, &#39;checkpoint&#39;: None, &#39;basenet&#39;: &#39;cifar10net&#39;, &#39;two_scale&#39;: False, &#39;cross_talk&#39;: 0.0, &#39;download_progress&#39;: True, &#39;head_consolidation&#39;: &#39;filter_and_extend&#39;, &#39;lambdas&#39;: None, &#39;r_smooth&#39;: 0.0, &#39;regression_loss&#39;: &#39;laplace&#39;, &#39;background_weight&#39;: 1.0, &#39;b_scale&#39;: 1.0, &#39;focal_gamma&#39;: 1.0, &#39;auto_tune_mtl&#39;: False, &#39;auto_tune_mtl_variance&#39;: False, &#39;task_sparsity_weight&#39;: 0.0, &#39;cif_side_length&#39;: 4, &#39;caf_min_size&#39;: 3, &#39;caf_fixed_size&#39;: False, &#39;caf_aspect_ratio&#39;: 0.0, &#39;encoder_suppress_selfhidden&#39;: True, &#39;momentum&#39;: 0.9, &#39;beta2&#39;: 0.999, &#39;adam_eps&#39;: 1e-06, &#39;nesterov&#39;: True, &#39;weight_decay&#39;: 0.0, &#39;adam&#39;: False, &#39;amsgrad&#39;: False, &#39;lr&#39;: 0.003, &#39;lr_decay&#39;: [], &#39;lr_decay_factor&#39;: 0.1, &#39;lr_decay_epochs&#39;: 1.0, &#39;lr_warm_up_start_epoch&#39;: 0, &#39;lr_warm_up_epochs&#39;: 0.1, &#39;lr_warm_up_factor&#39;: 0.001, &#39;lr_warm_restarts&#39;: [], &#39;lr_warm_restart_duration&#39;: 0.5, &#39;dataset&#39;: &#39;cifar10&#39;, &#39;loader_workers&#39;: 2, &#39;batch_size&#39;: 16, &#39;dataset_weights&#39;: None, &#39;cifar10_root_dir&#39;: &#39;data-cifar10/&#39;, &#39;cifar10_download&#39;: False, &#39;cocodet_train_annotations&#39;: &#39;data-mscoco/annotations/instances_train2017.json&#39;, &#39;cocodet_val_annotations&#39;: &#39;data-mscoco/annotations/instances_val2017.json&#39;, &#39;cocodet_train_image_dir&#39;: &#39;data-mscoco/images/train2017/&#39;, &#39;cocodet_val_image_dir&#39;: &#39;data-mscoco/images/val2017/&#39;, &#39;cocodet_square_edge&#39;: 513, &#39;cocodet_extended_scale&#39;: False, &#39;cocodet_orientation_invariant&#39;: 0.0, &#39;cocodet_blur&#39;: 0.0, &#39;cocodet_augmentation&#39;: True, &#39;cocodet_rescale_images&#39;: 1.0, &#39;cocodet_upsample&#39;: 1, &#39;cocokp_train_annotations&#39;: &#39;data-mscoco/annotations/person_keypoints_train2017.json&#39;, &#39;cocokp_val_annotations&#39;: &#39;data-mscoco/annotations/person_keypoints_val2017.json&#39;, &#39;cocokp_train_image_dir&#39;: &#39;data-mscoco/images/train2017/&#39;, &#39;cocokp_val_image_dir&#39;: &#39;data-mscoco/images/val2017/&#39;, &#39;cocokp_square_edge&#39;: 385, &#39;cocokp_extended_scale&#39;: False, &#39;cocokp_orientation_invariant&#39;: 0.0, &#39;cocokp_blur&#39;: 0.0, &#39;cocokp_augmentation&#39;: True, &#39;cocokp_rescale_images&#39;: 1.0, &#39;cocokp_upsample&#39;: 1, &#39;cocokp_min_kp_anns&#39;: 1, &#39;cocokp_bmin&#39;: 1.0, &#39;cocokp_eval_test2017&#39;: False, &#39;cocokp_eval_testdev2017&#39;: False, &#39;coco_eval_annotation_filter&#39;: True, &#39;coco_eval_long_edge&#39;: 641, &#39;coco_eval_extended_scale&#39;: False, &#39;coco_eval_orientation_invariant&#39;: 0.0, &#39;save_all&#39;: None, &#39;show&#39;: False, &#39;image_width&#39;: None, &#39;image_height&#39;: None, &#39;image_dpi_factor&#39;: 1.0, &#39;image_min_dpi&#39;: 50.0, &#39;show_file_extension&#39;: &#39;png&#39;, &#39;textbox_alpha&#39;: 0.5, &#39;text_color&#39;: &#39;white&#39;, &#39;font_size&#39;: 8, &#39;monocolor_connections&#39;: False, &#39;line_width&#39;: None, &#39;skeleton_solid_threshold&#39;: 0.5, &#39;show_box&#39;: False, &#39;white_overlay&#39;: False, &#39;show_joint_scales&#39;: False, &#39;show_joint_confidences&#39;: False, &#39;show_decoding_order&#39;: False, &#39;show_frontier_order&#39;: False, &#39;show_only_decoded_connections&#39;: False, &#39;video_fps&#39;: 10, &#39;video_dpi&#39;: 100, &#39;debug_cifhr&#39;: False, &#39;debug_cif_c&#39;: False, &#39;debug_cif_v&#39;: False, &#39;debug_cifdet_c&#39;: False, &#39;debug_cifdet_v&#39;: False, &#39;debug_caf_c&#39;: False, &#39;debug_caf_v&#39;: False, &#39;debug_indices&#39;: [], &#39;debug_images&#39;: False, &#39;output&#39;: &#39;cifar10_tutorial.pkl&#39;, &#39;stride_apply&#39;: 1, &#39;epochs&#39;: 1, &#39;val_interval&#39;: 1, &#39;train_batches&#39;: None, &#39;val_batches&#39;: None, &#39;fix_batch_norm&#39;: False, &#39;ema&#39;: 0.01, &#39;clip_grad_norm&#39;: 0.0, &#39;log_interval&#39;: 500, &#39;disable_cuda&#39;: False, &#39;profile&#39;: None, &#39;device&#39;: device(type=&#39;cpu&#39;), &#39;pin_memory&#39;: False}, &#39;version&#39;: &#39;0.12a6+37.gbc009af&#39;, &#39;plugin_versions&#39;: {}, &#39;hostname&#39;: &#39;fv-az40-648&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.logger:{&#39;type&#39;: &#39;process&#39;, &#39;argv&#39;: [&#39;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/train.py&#39;, &#39;--dataset=cifar10&#39;, &#39;--basenet=cifar10net&#39;, &#39;--epochs=1&#39;, &#39;--log-interval=500&#39;, &#39;--lr-warm-up-epochs=0.1&#39;, &#39;--lr=3e-3&#39;, &#39;--batch-size=16&#39;, &#39;--loader-workers=2&#39;, &#39;--output=cifar10_tutorial.pkl&#39;], &#39;args&#39;: {&#39;quiet&#39;: False, &#39;debug&#39;: False, &#39;log_stats&#39;: False, &#39;shufflenetv2_pretrained&#39;: True, &#39;squeezenet_pretrained&#39;: True, &#39;resnet_pretrained&#39;: True, &#39;resnet_pool0_stride&#39;: 0, &#39;resnet_input_conv_stride&#39;: 2, &#39;resnet_input_conv2_stride&#39;: 0, &#39;resnet_block5_dilation&#39;: 1, &#39;resnet_remove_last_block&#39;: False, &#39;mobilenetv2_pretrained&#39;: True, &#39;shufflenetv2k_input_conv2_stride&#39;: 0, &#39;shufflenetv2k_input_conv2_outchannels&#39;: None, &#39;shufflenetv2k_stage4_dilation&#39;: 1, &#39;shufflenetv2k_kernel&#39;: 5, &#39;shufflenetv2k_instance_norm&#39;: False, &#39;shufflenetv2k_group_norm&#39;: False, &#39;cf3_dropout&#39;: 0.0, &#39;cf3_inplace_ops&#39;: True, &#39;checkpoint&#39;: None, &#39;basenet&#39;: &#39;cifar10net&#39;, &#39;two_scale&#39;: False, &#39;cross_talk&#39;: 0.0, &#39;download_progress&#39;: True, &#39;head_consolidation&#39;: &#39;filter_and_extend&#39;, &#39;lambdas&#39;: None, &#39;r_smooth&#39;: 0.0, &#39;regression_loss&#39;: &#39;laplace&#39;, &#39;background_weight&#39;: 1.0, &#39;b_scale&#39;: 1.0, &#39;focal_gamma&#39;: 1.0, &#39;auto_tune_mtl&#39;: False, &#39;auto_tune_mtl_variance&#39;: False, &#39;task_sparsity_weight&#39;: 0.0, &#39;cif_side_length&#39;: 4, &#39;caf_min_size&#39;: 3, &#39;caf_fixed_size&#39;: False, &#39;caf_aspect_ratio&#39;: 0.0, &#39;encoder_suppress_selfhidden&#39;: True, &#39;momentum&#39;: 0.9, &#39;beta2&#39;: 0.999, &#39;adam_eps&#39;: 1e-06, &#39;nesterov&#39;: True, &#39;weight_decay&#39;: 0.0, &#39;adam&#39;: False, &#39;amsgrad&#39;: False, &#39;lr&#39;: 0.003, &#39;lr_decay&#39;: [], &#39;lr_decay_factor&#39;: 0.1, &#39;lr_decay_epochs&#39;: 1.0, &#39;lr_warm_up_start_epoch&#39;: 0, &#39;lr_warm_up_epochs&#39;: 0.1, &#39;lr_warm_up_factor&#39;: 0.001, &#39;lr_warm_restarts&#39;: [], &#39;lr_warm_restart_duration&#39;: 0.5, &#39;dataset&#39;: &#39;cifar10&#39;, &#39;loader_workers&#39;: 2, &#39;batch_size&#39;: 16, &#39;dataset_weights&#39;: None, &#39;cifar10_root_dir&#39;: &#39;data-cifar10/&#39;, &#39;cifar10_download&#39;: False, &#39;cocodet_train_annotations&#39;: &#39;data-mscoco/annotations/instances_train2017.json&#39;, &#39;cocodet_val_annotations&#39;: &#39;data-mscoco/annotations/instances_val2017.json&#39;, &#39;cocodet_train_image_dir&#39;: &#39;data-mscoco/images/train2017/&#39;, &#39;cocodet_val_image_dir&#39;: &#39;data-mscoco/images/val2017/&#39;, &#39;cocodet_square_edge&#39;: 513, &#39;cocodet_extended_scale&#39;: False, &#39;cocodet_orientation_invariant&#39;: 0.0, &#39;cocodet_blur&#39;: 0.0, &#39;cocodet_augmentation&#39;: True, &#39;cocodet_rescale_images&#39;: 1.0, &#39;cocodet_upsample&#39;: 1, &#39;cocokp_train_annotations&#39;: &#39;data-mscoco/annotations/person_keypoints_train2017.json&#39;, &#39;cocokp_val_annotations&#39;: &#39;data-mscoco/annotations/person_keypoints_val2017.json&#39;, &#39;cocokp_train_image_dir&#39;: &#39;data-mscoco/images/train2017/&#39;, &#39;cocokp_val_image_dir&#39;: &#39;data-mscoco/images/val2017/&#39;, &#39;cocokp_square_edge&#39;: 385, &#39;cocokp_extended_scale&#39;: False, &#39;cocokp_orientation_invariant&#39;: 0.0, &#39;cocokp_blur&#39;: 0.0, &#39;cocokp_augmentation&#39;: True, &#39;cocokp_rescale_images&#39;: 1.0, &#39;cocokp_upsample&#39;: 1, &#39;cocokp_min_kp_anns&#39;: 1, &#39;cocokp_bmin&#39;: 1.0, &#39;cocokp_eval_test2017&#39;: False, &#39;cocokp_eval_testdev2017&#39;: False, &#39;coco_eval_annotation_filter&#39;: True, &#39;coco_eval_long_edge&#39;: 641, &#39;coco_eval_extended_scale&#39;: False, &#39;coco_eval_orientation_invariant&#39;: 0.0, &#39;save_all&#39;: None, &#39;show&#39;: False, &#39;image_width&#39;: None, &#39;image_height&#39;: None, &#39;image_dpi_factor&#39;: 1.0, &#39;image_min_dpi&#39;: 50.0, &#39;show_file_extension&#39;: &#39;png&#39;, &#39;textbox_alpha&#39;: 0.5, &#39;text_color&#39;: &#39;white&#39;, &#39;font_size&#39;: 8, &#39;monocolor_connections&#39;: False, &#39;line_width&#39;: None, &#39;skeleton_solid_threshold&#39;: 0.5, &#39;show_box&#39;: False, &#39;white_overlay&#39;: False, &#39;show_joint_scales&#39;: False, &#39;show_joint_confidences&#39;: False, &#39;show_decoding_order&#39;: False, &#39;show_frontier_order&#39;: False, &#39;show_only_decoded_connections&#39;: False, &#39;video_fps&#39;: 10, &#39;video_dpi&#39;: 100, &#39;debug_cifhr&#39;: False, &#39;debug_cif_c&#39;: False, &#39;debug_cif_v&#39;: False, &#39;debug_cifdet_c&#39;: False, &#39;debug_cifdet_v&#39;: False, &#39;debug_caf_c&#39;: False, &#39;debug_caf_v&#39;: False, &#39;debug_indices&#39;: [], &#39;debug_images&#39;: False, &#39;output&#39;: &#39;cifar10_tutorial.pkl&#39;, &#39;stride_apply&#39;: 1, &#39;epochs&#39;: 1, &#39;val_interval&#39;: 1, &#39;train_batches&#39;: None, &#39;val_batches&#39;: None, &#39;fix_batch_norm&#39;: False, &#39;ema&#39;: 0.01, &#39;clip_grad_norm&#39;: 0.0, &#39;log_interval&#39;: 500, &#39;disable_cuda&#39;: False, &#39;profile&#39;: None, &#39;device&#39;: device(type=&#39;cpu&#39;), &#39;pin_memory&#39;: False}, &#39;version&#39;: &#39;0.12a6+38.g2067cdb&#39;, &#39;plugin_versions&#39;: {}, &#39;hostname&#39;: &#39;fv-az139-325&#39;}
 INFO:openpifpaf.network.basenetworks:cifar10net: stride = 16, output features = 128
 INFO:openpifpaf.network.losses:multihead loss: [&#39;cifar10.cifdet.c&#39;, &#39;cifar10.cifdet.vec1&#39;, &#39;cifar10.cifdet.vec2&#39;], [1.0, 1.0, 1.0]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.optimize:SGD optimizer
+INFO:openpifpaf.optimize:SGD optimizer
 INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;config&#39;, &#39;field_names&#39;: [&#39;cifar10.cifdet.c&#39;, &#39;cifar10.cifdet.vec1&#39;, &#39;cifar10.cifdet.vec2&#39;]}
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 0, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.043, &#39;data_time&#39;: 0.066, &#39;lr&#39;: 3e-06, &#39;loss&#39;: 67.377, &#39;head_losses&#39;: [31.378, 13.485, 22.515]}
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 500, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.025, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 24.07, &#39;head_losses&#39;: [14.492, 4.791, 4.787]}
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 1000, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.025, &#39;data_time&#39;: 0.001, &#39;lr&#39;: 0.003, &#39;loss&#39;: 24.269, &#39;head_losses&#39;: [14.653, 4.818, 4.798]}
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 1500, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.027, &#39;data_time&#39;: 0.001, &#39;lr&#39;: 0.003, &#39;loss&#39;: 21.389, &#39;head_losses&#39;: [11.798, 4.798, 4.793]}
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 2000, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.025, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 21.282, &#39;head_losses&#39;: [11.674, 4.813, 4.796]}
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 2500, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.026, &#39;data_time&#39;: 0.001, &#39;lr&#39;: 0.003, &#39;loss&#39;: 22.922, &#39;head_losses&#39;: [13.336, 4.799, 4.787]}
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 3000, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.025, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 22.467, &#39;head_losses&#39;: [12.853, 4.82, 4.793]}
+INFO:openpifpaf.network.trainer:applying ema
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train-epoch&#39;, &#39;epoch&#39;: 1, &#39;loss&#39;: 25.92839, &#39;head_losses&#39;: [14.43862, 5.49447, 5.9953], &#39;time&#39;: 86.6, &#39;n_clipped_grad&#39;: 0, &#39;max_norm&#39;: 0.0}
+INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;val-epoch&#39;, &#39;epoch&#39;: 1, &#39;loss&#39;: 21.48526, &#39;head_losses&#39;: [11.90978, 4.79242, 4.78307], &#39;time&#39;: 13.9}
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 0, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.041, &#39;data_time&#39;: 0.077, &#39;lr&#39;: 3e-06, &#39;loss&#39;: 66.679, &#39;head_losses&#39;: [31.011, 13.437, 22.231]}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 500, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.032, &#39;data_time&#39;: 0.001, &#39;lr&#39;: 0.003, &#39;loss&#39;: 24.749, &#39;head_losses&#39;: [15.158, 4.791, 4.8]}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 1000, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.032, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 24.134, &#39;head_losses&#39;: [14.536, 4.8, 4.797]}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 1500, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.031, &#39;data_time&#39;: 0.001, &#39;lr&#39;: 0.003, &#39;loss&#39;: 23.562, &#39;head_losses&#39;: [13.963, 4.802, 4.796]}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 2000, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.031, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 21.944, &#39;head_losses&#39;: [12.329, 4.809, 4.806]}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 2500, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.029, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 22.316, &#39;head_losses&#39;: [12.72, 4.804, 4.791]}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 3000, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.035, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 21.521, &#39;head_losses&#39;: [11.931, 4.799, 4.791]}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:applying ema
-INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train-epoch&#39;, &#39;epoch&#39;: 1, &#39;loss&#39;: 25.72992, &#39;head_losses&#39;: [14.34338, 5.4542, 5.93234], &#39;time&#39;: 107.9, &#39;n_clipped_grad&#39;: 0, &#39;max_norm&#39;: 0.0}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;val-epoch&#39;, &#39;epoch&#39;: 1, &#39;loss&#39;: 21.46121, &#39;head_losses&#39;: [11.88381, 4.79298, 4.78443], &#39;time&#39;: 16.2}
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() &gt; 0
 </pre></div>
 </div>
 </div>
@@ -493,7 +476,7 @@ INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train-epoch&#39;, &#39;epo
 </pre></div>
 </div>
 <img alt="_images/plugins_cifar10_11_10.png" src="_images/plugins_cifar10_11_10.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cifar10_tutorial.pkl.log: {&#39;message&#39;: None, &#39;levelname&#39;: &#39;INFO&#39;, &#39;name&#39;: &#39;openpifpaf.network.trainer&#39;, &#39;asctime&#39;: &#39;2020-11-24 16:25:25,306&#39;, &#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 3000, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.035, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 21.521, &#39;head_losses&#39;: [11.931, 4.799, 4.791]}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cifar10_tutorial.pkl.log: {&#39;message&#39;: None, &#39;levelname&#39;: &#39;INFO&#39;, &#39;name&#39;: &#39;openpifpaf.network.trainer&#39;, &#39;asctime&#39;: &#39;2020-11-24 20:19:43,887&#39;, &#39;type&#39;: &#39;train&#39;, &#39;epoch&#39;: 0, &#39;batch&#39;: 3000, &#39;n_batches&#39;: 3125, &#39;time&#39;: 0.025, &#39;data_time&#39;: 0.002, &#39;lr&#39;: 0.003, &#39;loss&#39;: 22.467, &#39;head_losses&#39;: [12.853, 4.82, 4.793]}
 </pre></div>
 </div>
 </div>
@@ -504,28 +487,36 @@ INFO:openpifpaf.network.trainer:{&#39;type&#39;: &#39;train-epoch&#39;, &#39;epo
 <p>First using CLI:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m openpifpaf.predict --checkpoint cifar10_tutorial.pkl.epoch001 images/cifar10_*.png --seed-threshold<span class="o">=</span><span class="m">0</span>.1 --json-output .
-<span class="o">!</span>cat cifar10_*.json
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+python -m openpifpaf.predict --checkpoint cifar10_tutorial.pkl.epoch001 images/cifar10_*.png --seed-threshold=0.1 --json-output .
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
   return torch._C._cuda_getDeviceCount() &gt; 0
 WARNING:openpifpaf.decoder.cifcaf:consistency: decreasing keypoint threshold to seed threshold of 0.100000
 INFO:openpifpaf.decoder.cifdet:annotations 1, decoder = 0.002s
 INFO:__main__:batch 0: images/cifar10_airplane4.png
-INFO:openpifpaf.decoder.cifdet:annotations 1, decoder = 0.002s
+INFO:openpifpaf.decoder.cifdet:annotations 1, decoder = 0.001s
 INFO:__main__:batch 1: images/cifar10_automobile10.png
-INFO:openpifpaf.decoder.cifdet:annotations 1, decoder = 0.002s
+INFO:openpifpaf.decoder.cifdet:annotations 1, decoder = 0.001s
 INFO:__main__:batch 2: images/cifar10_ship7.png
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:openpifpaf.decoder.cifdet:annotations 1, decoder = 0.002s
+INFO:openpifpaf.decoder.cifdet:annotations 1, decoder = 0.002s
 INFO:__main__:batch 3: images/cifar10_truck8.png
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&quot;category_id&quot;: 1, &quot;category&quot;: &quot;plane&quot;, &quot;score&quot;: 0.237, &quot;bbox&quot;: [5.19, 4.89, 21.0, 20.9]}][{&quot;category_id&quot;: 2, &quot;category&quot;: &quot;car&quot;, &quot;score&quot;: 0.342, &quot;bbox&quot;: [6.12, 6.6, 20.73, 20.56]}][{&quot;category_id&quot;: 9, &quot;category&quot;: &quot;ship&quot;, &quot;score&quot;: 0.225, &quot;bbox&quot;: [5.09, 5.11, 20.31, 20.73]}][{&quot;category_id&quot;: 10, &quot;category&quot;: &quot;truck&quot;, &quot;score&quot;: 0.206, &quot;bbox&quot;: [4.61, 4.54, 20.96, 21.14]}]
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span> 
+cat cifar10_*.json
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&quot;category_id&quot;: 1, &quot;category&quot;: &quot;plane&quot;, &quot;score&quot;: 0.245, &quot;bbox&quot;: [5.02, 4.78, 21.07, 20.86]}][{&quot;category_id&quot;: 2, &quot;category&quot;: &quot;car&quot;, &quot;score&quot;: 0.325, &quot;bbox&quot;: [4.79, 5.7, 20.54, 20.25]}][{&quot;category_id&quot;: 9, &quot;category&quot;: &quot;ship&quot;, &quot;score&quot;: 0.238, &quot;bbox&quot;: [5.05, 5.43, 20.63, 20.3]}][{&quot;category_id&quot;: 10, &quot;category&quot;: &quot;truck&quot;, &quot;score&quot;: 0.204, &quot;bbox&quot;: [5.67, 5.19, 21.07, 21.02]}]
 </pre></div>
 </div>
 </div>
@@ -557,20 +548,20 @@ INFO:__main__:batch 3: images/cifar10_truck8.png
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/plugins_cifar10_15_0.png" src="_images/plugins_cifar10_15_0.png" />
+<img alt="_images/plugins_cifar10_16_0.png" src="_images/plugins_cifar10_16_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;plane 24%&#39;]
 </pre></div>
 </div>
-<img alt="_images/plugins_cifar10_15_2.png" src="_images/plugins_cifar10_15_2.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;car 34%&#39;]
+<img alt="_images/plugins_cifar10_16_2.png" src="_images/plugins_cifar10_16_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;car 32%&#39;]
 </pre></div>
 </div>
-<img alt="_images/plugins_cifar10_15_4.png" src="_images/plugins_cifar10_15_4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ship 22%&#39;]
+<img alt="_images/plugins_cifar10_16_4.png" src="_images/plugins_cifar10_16_4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;ship 24%&#39;]
 </pre></div>
 </div>
-<img alt="_images/plugins_cifar10_15_6.png" src="_images/plugins_cifar10_15_6.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;truck 21%&#39;]
+<img alt="_images/plugins_cifar10_16_6.png" src="_images/plugins_cifar10_16_6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;truck 20%&#39;]
 </pre></div>
 </div>
 </div>
@@ -582,16 +573,12 @@ INFO:__main__:batch 3: images/cifar10_truck8.png
 <p>Therefore, we should run a proper quantitative evaluation with <code class="docutils literal notranslate"><span class="pre">openpifpaf.eval</span></code>. It stores its output as a json file, so we print that afterwards.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m openpifpaf.eval --checkpoint cifar10_tutorial.pkl.epoch001 --dataset<span class="o">=</span>cifar10 --seed-threshold<span class="o">=</span><span class="m">0</span>.1 --instance-threshold<span class="o">=</span><span class="m">0</span>.1 --quiet
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+python -m openpifpaf.eval --checkpoint cifar10_tutorial.pkl.epoch001 --dataset=cifar10 --seed-threshold=0.1 --instance-threshold=0.1 --quiet
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
-  return torch._C._cuda_getDeviceCount() &gt; 0
-WARNING:openpifpaf.decoder.cifcaf:consistency: decreasing keypoint threshold to seed threshold of 0.100000
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[INFO] Register count_convNd() for &lt;class &#39;torch.nn.modules.conv.Conv2d&#39;&gt;.
 [WARN] Cannot find rule for &lt;class &#39;openpifpaf.plugins.cifar10.basenet.Cifar10Net&#39;&gt;. Treat it as zero Macs and zero Params.
 [WARN] Cannot find rule for &lt;class &#39;torch.nn.modules.dropout.Dropout2d&#39;&gt;. Treat it as zero Macs and zero Params.
@@ -600,11 +587,17 @@ WARNING:openpifpaf.decoder.cifcaf:consistency: decreasing keypoint threshold to 
 [WARN] Cannot find rule for &lt;class &#39;openpifpaf.network.nets.Shell&#39;&gt;. Treat it as zero Macs and zero Params.
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Found no NVIDIA driver on your system. Please check that you have an NVIDIA GPU and installed a driver from http://www.nvidia.com/Download/index.aspx (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:100.)
+  return torch._C._cuda_getDeviceCount() &gt; 0
+WARNING:openpifpaf.decoder.cifcaf:consistency: decreasing keypoint threshold to seed threshold of 0.100000
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>python -m json.tool cifar10_tutorial.pkl.epoch001.eval-cifar10.stats.json
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+python -m json.tool cifar10_tutorial.pkl.epoch001.eval-cifar10.stats.json
 </pre></div>
 </div>
 </div>
@@ -624,17 +617,17 @@ WARNING:openpifpaf.decoder.cifcaf:consistency: decreasing keypoint threshold to 
         &quot;truck&quot;
     ],
     &quot;stats&quot;: [
-        0.4603,
-        0.532,
-        0.687,
-        0.108,
-        0.19,
-        0.378,
-        0.488,
-        0.557,
-        0.519,
-        0.642,
-        0.502
+        0.4581,
+        0.476,
+        0.71,
+        0.321,
+        0.255,
+        0.122,
+        0.312,
+        0.609,
+        0.585,
+        0.676,
+        0.515
     ],
     &quot;args&quot;: [
         &quot;/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/openpifpaf/eval.py&quot;,
@@ -645,9 +638,9 @@ WARNING:openpifpaf.decoder.cifcaf:consistency: decreasing keypoint threshold to 
         &quot;--instance-threshold=0.1&quot;,
         &quot;--quiet&quot;
     ],
-    &quot;version&quot;: &quot;0.12a6+37.gbc009af&quot;,
+    &quot;version&quot;: &quot;0.12a6+38.g2067cdb&quot;,
     &quot;dataset&quot;: &quot;cifar10&quot;,
-    &quot;total_time&quot;: 55.632691383361816,
+    &quot;total_time&quot;: 44.46215581893921,
     &quot;checkpoint&quot;: &quot;cifar10_tutorial.pkl.epoch001&quot;,
     &quot;count_ops&quot;: [
         427119430.0,
@@ -655,8 +648,8 @@ WARNING:openpifpaf.decoder.cifcaf:consistency: decreasing keypoint threshold to 
     ],
     &quot;file_size&quot;: 436745,
     &quot;n_images&quot;: 10000,
-    &quot;decoder_time&quot;: 22.57693465400223,
-    &quot;nn_time&quot;: 23.334811025000363
+    &quot;decoder_time&quot;: 17.693169688001433,
+    &quot;nn_time&quot;: 18.565843507001034
 }
 </pre></div>
 </div>

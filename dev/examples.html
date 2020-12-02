@@ -412,13 +412,15 @@ DEBUG:openpifpaf.show.painters:color connections = True, lw = 2, marker = 6
 DEBUG:openpifpaf.show.painters:color connections = False, lw = 6, marker = 3
 DEBUG:openpifpaf.decoder.factory:created 1 decoders
 DEBUG:openpifpaf.show.painters:color connections = False, lw = 6, marker = 3
-DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 369. 320.], image size = (370, 321)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.transforms.pad:valid area before pad: [  0.   0. 369. 320.], image size = (370, 321)
 DEBUG:openpifpaf.transforms.pad:pad with (7, 0, 8, 0)
 DEBUG:openpifpaf.transforms.pad:valid area after pad: [  7.   0. 369. 320.], image size = (385, 321)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.decoder:nn processing time: 0.269s
-DEBUG:openpifpaf.decoder.decoder:parallel execution with worker &lt;openpifpaf.decoder.decoder.DummyPool object at 0x7fe0624c7050&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.decoder:nn processing time: 0.277s
+DEBUG:openpifpaf.decoder.decoder:parallel execution with worker &lt;openpifpaf.decoder.decoder.DummyPool object at 0x7f3c168023d0&gt;
 DEBUG:openpifpaf.decoder.multi:task 0
 DEBUG:openpifpaf.decoder.cifcaf:initial annotations = 0
 DEBUG:openpifpaf.visualizer.cif:left_shoulder
@@ -460,11 +462,11 @@ DEBUG:openpifpaf.decoder.utils.occupancy:shape = (17, 161, 193), min_scale = 2
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.show.canvas:writing image to coco_debug_example/0006.jpeg
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.cifcaf:annotations 5, 2.093s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DEBUG:openpifpaf.decoder.cifcaf:annotations 5, 1.962s
 DEBUG:openpifpaf.decoder.utils.occupancy:shape = (17, 137, 164), min_scale = 2
 DEBUG:openpifpaf.decoder.utils.nms:nms = 0.003s
 INFO:openpifpaf.decoder.cifcaf:5 annotations: [17, 17, 17, 14, 7]
-DEBUG:openpifpaf.decoder.decoder:time: nn = 0.270s, dec = 2.098s
+DEBUG:openpifpaf.decoder.decoder:time: nn = 0.277s, dec = 1.967s
 INFO:__main__:batch 0: coco/000000541055_cropped.jpeg
 DEBUG:__main__:image output = coco/000000541055_cropped.jpeg.predictions.jpeg
 </pre></div>

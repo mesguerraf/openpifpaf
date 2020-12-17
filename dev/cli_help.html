@@ -382,7 +382,7 @@ optional arguments:
 
 decoder configuration:
   --decoder DECODER [DECODER ...]
-                        Decoders to be considered: [&#39;cifdet&#39;, &#39;cifcaf&#39;].
+                        Decoders to be considered: [&#39;cifcaf&#39;, &#39;cifdet&#39;].
                         (default: None)
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
@@ -423,14 +423,6 @@ logger:
   --debug               print debug messages (default: False)
   --log-stats           enable stats logging (default: False)
 
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 shufflenetv2k:
   --shufflenetv2k-input-conv2-stride SHUFFLENETV2K_INPUT_CONV2_STRIDE
                         stride of the optional 2nd input convolution (default:
@@ -445,6 +437,14 @@ shufflenetv2k:
   --shufflenetv2k-conv5-as-stage
   --shufflenetv2k-instance-norm
   --shufflenetv2k-group-norm
+
+SqueezeNet:
+  --squeezenet-no-pretrain
+                        use randomly initialized models (default: True)
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
 
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
@@ -520,7 +520,10 @@ show:
   --show-frontier-order
   --show-only-decoded-connections
   --video-fps VIDEO_FPS
+                        output video frame rate (frames per second) (default:
+                        10)
   --video-dpi VIDEO_DPI
+                        output video resolution (dots per inch) (default: 100)
 
 pose visualizer:
   --debug-cifhr
@@ -593,6 +596,14 @@ optional arguments:
   --rotate {left,right,180}
   --separate-debug-ax
 
+SqueezeNet:
+  --squeezenet-no-pretrain
+                        use randomly initialized models (default: True)
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
@@ -627,14 +638,6 @@ ResNet:
                         create a network without the last block (default:
                         False)
 
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
-
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
                         [experimental] zeroing probability of feature in head
@@ -660,7 +663,7 @@ network configuration:
 
 decoder configuration:
   --decoder DECODER [DECODER ...]
-                        Decoders to be considered: [&#39;cifdet&#39;, &#39;cifcaf&#39;].
+                        Decoders to be considered: [&#39;cifcaf&#39;, &#39;cifdet&#39;].
                         (default: None)
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
@@ -733,7 +736,10 @@ show:
   --show-frontier-order
   --show-only-decoded-connections
   --video-fps VIDEO_FPS
+                        output video frame rate (frames per second) (default:
+                        10)
   --video-dpi VIDEO_DPI
+                        output video resolution (dots per inch) (default: 100)
 
 pose visualizer:
   --debug-cifhr
@@ -778,6 +784,14 @@ logger:
   --debug               print debug messages (default: False)
   --log-stats           enable stats logging (default: False)
 
+SqueezeNet:
+  --squeezenet-no-pretrain
+                        use randomly initialized models (default: True)
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
@@ -811,14 +825,6 @@ ResNet:
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
-
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -860,15 +866,15 @@ Composite Loss:
   --b-scale B_SCALE     Laplace width b for scale loss (default: 1.0)
 
 Bce Loss:
-  --r-smooth R_SMOOTH   r_{smooth} for SmoothL1 regressions (default: 0.0)
-
-Bce Loss:
   --background-weight BACKGROUND_WEIGHT
                         BCE weight where ground truth is background (default:
                         1.0)
   --focal-gamma FOCAL_GAMMA
                         when &gt; 0.0, use focal loss with the given gamma
                         (default: 1.0)
+
+Bce Loss:
+  --r-smooth R_SMOOTH   r_{smooth} for SmoothL1 regressions (default: 0.0)
 
 trainer:
   --epochs EPOCHS       number of epochs to train (default: None)
@@ -1033,7 +1039,10 @@ show:
   --show-frontier-order
   --show-only-decoded-connections
   --video-fps VIDEO_FPS
+                        output video frame rate (frames per second) (default:
+                        10)
   --video-dpi VIDEO_DPI
+                        output video resolution (dots per inch) (default: 100)
 
 pose visualizer:
   --debug-cifhr
@@ -1147,7 +1156,7 @@ data module CocoKp:
 
 decoder configuration:
   --decoder DECODER [DECODER ...]
-                        Decoders to be considered: [&#39;cifdet&#39;, &#39;cifcaf&#39;].
+                        Decoders to be considered: [&#39;cifcaf&#39;, &#39;cifdet&#39;].
                         (default: None)
   --seed-threshold SEED_THRESHOLD
                         minimum threshold for seeds (default: 0.5)
@@ -1188,6 +1197,14 @@ logger:
   --debug               print debug messages (default: False)
   --log-stats           enable stats logging (default: False)
 
+SqueezeNet:
+  --squeezenet-no-pretrain
+                        use randomly initialized models (default: True)
+
+MobileNetV2:
+  --mobilenetv2-no-pretrain
+                        use randomly initialized models (default: True)
+
 ShuffleNetv2:
   --shufflenetv2-no-pretrain
                         use randomly initialized models (default: True)
@@ -1221,14 +1238,6 @@ ResNet:
   --resnet-remove-last-block
                         create a network without the last block (default:
                         False)
-
-SqueezeNet:
-  --squeezenet-no-pretrain
-                        use randomly initialized models (default: True)
-
-MobileNetV2:
-  --mobilenetv2-no-pretrain
-                        use randomly initialized models (default: True)
 
 CompositeField3:
   --cf3-dropout CF3_DROPOUT
@@ -1285,7 +1294,10 @@ show:
   --show-frontier-order
   --show-only-decoded-connections
   --video-fps VIDEO_FPS
+                        output video frame rate (frames per second) (default:
+                        10)
   --video-dpi VIDEO_DPI
+                        output video resolution (dots per inch) (default: 100)
 
 pose visualizer:
   --debug-cifhr
@@ -1480,7 +1492,10 @@ show:
   --show-frontier-order
   --show-only-decoded-connections
   --video-fps VIDEO_FPS
+                        output video frame rate (frames per second) (default:
+                        10)
   --video-dpi VIDEO_DPI
+                        output video resolution (dots per inch) (default: 100)
 </pre></div>
 </div>
 </div>

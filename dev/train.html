@@ -403,7 +403,7 @@ Here is the corresponding predict command for the <a class="reference external" 
 <h2>ShuffleNet<a class="headerlink" href="#shufflenet" title="Permalink to this headline">¶</a></h2>
 <p>ShuffleNet models are trained without ImageNet pretraining:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
-  --lr<span class="o">=</span><span class="m">0</span>.0003 --momentum<span class="o">=</span><span class="m">0</span>.95 --b-scale<span class="o">=</span><span class="m">3</span>.0 <span class="se">\</span>
+  --lr<span class="o">=</span><span class="m">0</span>.0001 --momentum<span class="o">=</span><span class="m">0</span>.95 --b-scale<span class="o">=</span><span class="m">3</span>.0 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
   --lr-decay <span class="m">130</span> <span class="m">140</span> --lr-decay-epochs<span class="o">=</span><span class="m">10</span> <span class="se">\</span>
   --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
@@ -415,7 +415,7 @@ Here is the corresponding predict command for the <a class="reference external" 
 <p>For improved performance, take the epoch150 checkpoint and train with
 extended-scale and 10% orientation invariance:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1 python3 -m openpifpaf.train <span class="se">\</span>
-  --lr<span class="o">=</span><span class="m">0</span>.0003 --momentum<span class="o">=</span><span class="m">0</span>.95 --b-scale<span class="o">=</span><span class="m">3</span>.0 <span class="se">\</span>
+  --lr<span class="o">=</span><span class="m">0</span>.0001 --momentum<span class="o">=</span><span class="m">0</span>.95 --b-scale<span class="o">=</span><span class="m">3</span>.0 <span class="se">\</span>
   --epochs<span class="o">=</span><span class="m">250</span> <span class="se">\</span>
   --lr-decay <span class="m">220</span> <span class="m">240</span> --lr-decay-epochs<span class="o">=</span><span class="m">10</span> --lr-warm-up-start-epoch<span class="o">=</span><span class="m">150</span> <span class="se">\</span>
   --batch-size<span class="o">=</span><span class="m">32</span> <span class="se">\</span>
@@ -452,6 +452,7 @@ That makes their training characteristics different from ShuffleNet (i.e. they l
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span> python3 -m openpifpaf.eval <span class="se">\</span>
   --watch --checkpoint <span class="s2">&quot;outputs/shufflenetv2k??-*-cocokp*.pkl.epoch??[0,5]&quot;</span> <span class="se">\</span>
   --loader-workers<span class="o">=</span><span class="m">2</span> <span class="se">\</span>
+  --decoder<span class="o">=</span>cifcaf:0 <span class="se">\</span>
   --dataset<span class="o">=</span>cocokp --force-complete-pose --seed-threshold<span class="o">=</span><span class="m">0</span>.2
 </pre></div>
 </div>

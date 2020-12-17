@@ -17,18 +17,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import importlib.metadata
-extras = importlib.metadata.metadata('openpifpaf').get_all('Provides-Extra')
-print(f'pip3 install "openpifpaf[{",".join(extras)}]"')
+if sys.version_info >= (3, 8):
+    import importlib.metadata
+    extras = importlib.metadata.metadata('openpifpaf').get_all('Provides-Extra')
+    print(f'pip3 install "openpifpaf[{",".join(extras)}]"')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m<ipython-input-1-845b7abe6d4e>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;32mimport[0m [0mimportlib[0m[0;34m.[0m[0mmetadata[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0mextras[0m [0;34m=[0m [0mimportlib[0m[0;34m.[0m[0mmetadata[0m[0;34m.[0m[0mmetadata[0m[0;34m([0m[0;34m'openpifpaf'[0m[0;34m)[0m[0;34m.[0m[0mget_all[0m[0;34m([0m[0;34m'Provides-Extra'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0mprint[0m[0;34m([0m[0;34mf'pip3 install "openpifpaf[{",".join(extras)}]"'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-1-1681635b31b1>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mif[0m [0msys[0m[0;34m.[0m[0mversion_info[0m [0;34m>=[0m [0;34m([0m[0;36m3[0m[0;34m,[0m [0;36m8[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m     [0;32mimport[0m [0mimportlib[0m[0;34m.[0m[0mmetadata[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m     [0mextras[0m [0;34m=[0m [0mimportlib[0m[0;34m.[0m[0mmetadata[0m[0;34m.[0m[0mmetadata[0m[0;34m([0m[0;34m'openpifpaf'[0m[0;34m)[0m[0;34m.[0m[0mget_all[0m[0;34m([0m[0;34m'Provides-Extra'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m     [0mprint[0m[0;34m([0m[0;34mf'pip3 install "openpifpaf[{",".join(extras)}]"'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'importlib.metadata'
-ModuleNotFoundError: No module named 'importlib.metadata'
+[0;31mNameError[0m: name 'sys' is not defined
+NameError: name 'sys' is not defined
 

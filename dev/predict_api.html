@@ -355,7 +355,7 @@ The API is for more advanced use cases. Please read <a class="reference internal
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.12b1+2.g89a0d2e
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.12b1+3.g73c64ed
 1.7.1
 </pre></div>
 </div>
@@ -445,6 +445,35 @@ The API is for more advanced use cases. Please read <a class="reference internal
 <img alt="_images/predict_api_11_1.png" src="_images/predict_api_11_1.png" />
 </div>
 </div>
+<p>Each prediction in the <code class="docutils literal notranslate"><span class="pre">predictions</span></code> list above is of type <code class="docutils literal notranslate"><span class="pre">Annotation</span></code>. You can access the joint coordinates in the <code class="docutils literal notranslate"><span class="pre">data</span></code> attribute. It is a numpy array that contains the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates and the confidence for every joint:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  0.        ,   0.        ,   0.        ],
+       [  0.        ,   0.        ,   0.        ],
+       [  0.        ,   0.        ,   0.        ],
+       [388.0485    , 151.62822   ,   0.83812875],
+       [411.06952   , 152.3272    ,   0.70507276],
+       [376.9516    , 179.63708   ,   0.88851595],
+       [425.63177   , 181.92236   ,   0.91449296],
+       [338.46313   , 195.02182   ,   0.85045236],
+       [466.0379    , 195.23445   ,   0.9744462 ],
+       [299.57376   , 196.95728   ,   0.8164029 ],
+       [495.77896   , 188.01447   ,   0.9292981 ],
+       [387.26727   , 257.54318   ,   0.85967666],
+       [416.49805   , 257.5432    ,   0.91121936],
+       [381.79047   , 320.47818   ,   0.6506343 ],
+       [408.69846   , 321.7876    ,   0.832066  ],
+       [  0.        ,   0.        ,   0.        ],
+       [404.49008   , 373.21066   ,   0.5696814 ]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="fields">
 <h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
@@ -468,8 +497,8 @@ Then, the index for every field to visualize must be specified. In the example b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/predict_api_13_0.png" src="_images/predict_api_13_0.png" />
-<img alt="_images/predict_api_13_1.png" src="_images/predict_api_13_1.png" />
+<img alt="_images/predict_api_15_0.png" src="_images/predict_api_15_0.png" />
+<img alt="_images/predict_api_15_1.png" src="_images/predict_api_15_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -488,8 +517,8 @@ Then, the index for every field to visualize must be specified. In the example b
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/predict_api_14_0.png" src="_images/predict_api_14_0.png" />
-<img alt="_images/predict_api_14_1.png" src="_images/predict_api_14_1.png" />
+<img alt="_images/predict_api_16_0.png" src="_images/predict_api_16_0.png" />
+<img alt="_images/predict_api_16_1.png" src="_images/predict_api_16_1.png" />
 </div>
 </div>
 <p>From the CIF field, a high resolution accumulation (in the code it’s called <code class="docutils literal notranslate"><span class="pre">CifHr</span></code>) is generated.
@@ -510,7 +539,7 @@ This is also the basis for the seeds. Both are shown below.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/predict_api_16_0.png" src="_images/predict_api_16_0.png" />
+<img alt="_images/predict_api_18_0.png" src="_images/predict_api_18_0.png" />
 </div>
 </div>
 <p>Starting from a seed, the poses are constructed. At every joint position, an occupancy map marks whether a previous pose was already constructed here. This reduces the number of poses that are constructed from multiple seeds for the same person. The final occupancy map is below:</p>
@@ -528,7 +557,7 @@ This is also the basis for the seeds. Both are shown below.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/predict_api_18_0.png" src="_images/predict_api_18_0.png" />
+<img alt="_images/predict_api_20_0.png" src="_images/predict_api_20_0.png" />
 </div>
 </div>
 </div>

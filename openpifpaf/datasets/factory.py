@@ -2,7 +2,7 @@ import torch
 
 from .coco import Coco
 from .collate import collate_images_targets_meta
-from .constants import COCO_KEYPOINTS, HFLIP
+from .constants import COCO_KEYPOINTS, HFLIP, HFLIP_CT, CT_KEYPOINTS
 from .. import transforms
 
 COCOKP_ANNOTATIONS_TRAIN = 'data-mscoco/annotations/person_keypoints_train2017.json'
@@ -11,7 +11,10 @@ COCODET_ANNOTATIONS_TRAIN = 'data-mscoco/annotations/instances_train2017.json'
 COCODET_ANNOTATIONS_VAL = 'data-mscoco/annotations/instances_val2017.json'
 COCO_IMAGE_DIR_TRAIN = 'data-mscoco/images/train2017/'
 COCO_IMAGE_DIR_VAL = 'data-mscoco/images/val2017/'
-
+IMAGE_DIR_TRAIN = '../datasets/coolingTowersV3/images/train/'
+IMAGE_DIR_VAL = '../datasets/coolingTowersV3/images/val/'
+ANNOTATIONS_TRAIN = '../datasets/coolingTowersV3/images/annotations/instances_train_dummy.json'
+ANNOTATIONS_VAL = '../datasets/coolingTowersV3/images/annotations/instances_val_dummy.json'
 
 def train_cli(parser):
     group = parser.add_argument_group('dataset and loader')
@@ -21,7 +24,11 @@ def train_cli(parser):
     group.add_argument('--cocodet-val-annotations', default=COCODET_ANNOTATIONS_VAL)
     group.add_argument('--coco-train-image-dir', default=COCO_IMAGE_DIR_TRAIN)
     group.add_argument('--coco-val-image-dir', default=COCO_IMAGE_DIR_VAL)
-    group.add_argument('--dataset', default='cocokp')
+    group.add_argument('--train-image-dir', default=IMAGE_DIR_TRAIN)
+    group.add_argument('--val-image-dir', default=IMAGE_DIR_VAL)
+    group.add_argument('--train-annotations', default=ANNOTATIONS_TRAIN)
+    group.add_argument('--val-annotations', default=ANNOTATIONS_VAL)
+    group.add_argument('--dataset', default='ctowers')
     group.add_argument('--n-images', default=None, type=int,
                        help='number of images to sample')
     group.add_argument('--loader-workers', default=None, type=int,
@@ -78,6 +85,46 @@ def train_cocokp_preprocess_factory(
         transforms.NormalizeAnnotations(),
         transforms.AnnotationJitter(),
         transforms.RandomApply(transforms.HFlip(COCO_KEYPOINTS, HFLIP), 0.5),
+        rescale_t,
+        transforms.Crop(square_edge, use_area_of_interest=True),
+        transforms.CenterPad(square_edge),
+        orientation_t,
+        transforms.TRAIN_TRANSFORM,
+    ])
+
+def train_ct_preprocess_factory(
+        *,
+        square_edge,
+        augmentation=True,
+        extended_scale=False,
+        orientation_invariant=0.0,
+        rescale_images=1.0,
+):
+    if not augmentation:
+        return transforms.Compose([
+            transforms.NormalizeAnnotations(),
+            transforms.RescaleAbsolute(square_edge),
+            transforms.CenterPad(square_edge),
+            transforms.EVAL_TRANSFORM,
+        ])
+
+    if extended_scale:
+        rescale_t = transforms.RescaleRelative(
+            scale_range=(0.25 * rescale_images, 2.0 * rescale_images),
+            power_law=True, stretch_range=(0.75, 1.33))
+    else:
+        rescale_t = transforms.RescaleRelative(
+            scale_range=(0.4 * rescale_images, 2.0 * rescale_images),
+            power_law=True, stretch_range=(0.75, 1.33))
+
+    orientation_t = None
+    if orientation_invariant:
+        orientation_t = transforms.RandomApply(transforms.RotateBy90(), orientation_invariant)
+
+    return transforms.Compose([
+        transforms.NormalizeAnnotations(),
+        transforms.AnnotationJitter(),
+        transforms.RandomApply(transforms.HFlip(CT_KEYPOINTS, HFLIP_CT), 0.5),
         rescale_t,
         transforms.Crop(square_edge, use_area_of_interest=True),
         transforms.CenterPad(square_edge),
@@ -171,6 +218,47 @@ def train_cocokp_factory(args, target_transforms):
 
     return train_loader, val_loader
 
+def train_ct_factory(args, target_transforms):
+    preprocess = train_ct_preprocess_factory(
+        square_edge=args.square_edge,
+        augmentation=args.augmentation,
+        extended_scale=args.extended_scale,
+        orientation_invariant=args.orientation_invariant,
+        rescale_images=args.rescale_images)
+
+    if args.loader_workers is None:
+        args.loader_workers = args.batch_size
+
+    train_data = Coco(
+        image_dir=args.train_image_dir,
+        ann_file=args.train_annotations,
+        preprocess=preprocess,
+        target_transforms=target_transforms,
+        n_images=args.n_images,
+        image_filter='all',
+        category_ids=[1],
+    )
+    train_loader = torch.utils.data.DataLoader(
+        train_data, batch_size=args.batch_size, shuffle=not args.debug,
+        pin_memory=args.pin_memory, num_workers=args.loader_workers, drop_last=True,
+        collate_fn=collate_images_targets_meta)
+
+    val_data = Coco(
+        image_dir=args.val_image_dir,
+        ann_file=args.val_annotations,
+        preprocess=preprocess,
+        target_transforms=target_transforms,
+        n_images=args.n_images,
+        image_filter='all',
+        category_ids=[1],
+    )
+    val_loader = torch.utils.data.DataLoader(
+        val_data, batch_size=args.batch_size, shuffle=False,
+        pin_memory=args.pin_memory, num_workers=args.loader_workers, drop_last=True,
+        collate_fn=collate_images_targets_meta)
+
+    return train_loader, val_loader
+
 
 def train_cocodet_factory(args, target_transforms):
     preprocess = train_cocodet_preprocess_factory(
@@ -194,8 +282,8 @@ def train_cocodet_factory(args, target_transforms):
     )
     train_loader = torch.utils.data.DataLoader(
         train_data, batch_size=args.batch_size, shuffle=False,
-        sampler=torch.utils.data.WeightedRandomSampler(
-            train_data.class_aware_sample_weights(), len(train_data), replacement=True),
+#         sampler=torch.utils.data.WeightedRandomSampler(
+#             train_data.class_aware_sample_weights(), len(train_data), replacement=True),
         pin_memory=args.pin_memory, num_workers=args.loader_workers, drop_last=True,
         collate_fn=collate_images_targets_meta)
 
@@ -210,8 +298,8 @@ def train_cocodet_factory(args, target_transforms):
     )
     val_loader = torch.utils.data.DataLoader(
         val_data, batch_size=args.batch_size, shuffle=False,
-        sampler=torch.utils.data.WeightedRandomSampler(
-            val_data.class_aware_sample_weights(), len(val_data), replacement=True),
+#         sampler=torch.utils.data.WeightedRandomSampler(
+#             val_data.class_aware_sample_weights(), len(val_data), replacement=True),
         pin_memory=args.pin_memory, num_workers=args.loader_workers, drop_last=True,
         collate_fn=collate_images_targets_meta)
 
@@ -219,6 +307,9 @@ def train_cocodet_factory(args, target_transforms):
 
 
 def train_factory(args, target_transforms):
+    if args.dataset in ('ctowers',):
+        print('train ctower')
+        return train_ct_factory(args, target_transforms)
     if args.dataset in ('cocokp',):
         return train_cocokp_factory(args, target_transforms)
     if args.dataset in ('cocodet',):

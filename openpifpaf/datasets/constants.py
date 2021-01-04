@@ -19,6 +19,15 @@ KINEMATIC_TREE_SKELETON = [
     (7, 13), (13, 15), (15, 17),
 ]
 
+CT_KEYPOINTS= [
+    'up_left',         # 1
+    'up_right',        # 2
+    'down_left',       # 3
+    'down_right',      # 4
+    'center',          # 5
+]
+
+CT_CATEGORIES = ['coolingTower']
 
 COCO_KEYPOINTS = [
     'nose',            # 1
@@ -100,6 +109,11 @@ HFLIP = {
     'right_knee': 'left_knee',
     'left_ankle': 'right_ankle',
     'right_ankle': 'left_ankle',
+}
+
+HFLIP_CT = {
+    'up_left': 'up_right',
+    'down_right': 'down_left'
 }
 
 

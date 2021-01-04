@@ -7,5 +7,6 @@ del get_versions
 from .annotation import Annotation, AnnotationDet
 from . import datasets
 from . import decoder
+from . import encoder
 from . import network
 from . import optimize
